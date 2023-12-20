@@ -19,5 +19,15 @@ class DatabaseSeeder extends Seeder
             CoursesTableSeeder::class,
             // 他のシーダーがあればここで呼び出す
         ]);
+
+        // CategoriesTableSeeder を最後に呼び出す
+        $this->call([
+            CategoriesTableSeeder::class,
+        ]);
+
+        $this->call([
+            SectionsTableSeeder::class,
+            // 他のシーダーがあればここで呼び出す
+        ]);
     }
 }

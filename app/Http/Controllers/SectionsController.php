@@ -10,10 +10,10 @@ class SectionsController extends Controller
 {
     public function show($course_id, $section_id)
     {
-        $section = Section::findOrFail($section_id);
-        $course = $section->course;
-        $sections = $course->sections()->orderBy('no')->get();
+    $course = Course::findOrFail($course_id);
+    $sections = $course->sections()->ordered()->get();
+    $current_section = $sections->find($section_id);
 
-        return view('sections.show', compact('course', 'sections', 'section'));
+    return view('detail', compact('course', 'sections', 'current_section'));
     }
 }
