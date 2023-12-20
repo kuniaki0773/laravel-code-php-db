@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class SignInController extends Controller
 {
-    public function index()
+    public function show()
     {
         // サインインページのビューを返す
         return view('signin');

@@ -31,5 +31,7 @@ Route::get('/sections/{course_id}/{section_id}', [SectionsController::class, 'sh
 Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');
 Route::get('/detail/{course_id}/{section_id}', [SectionsController::class, 'detail'])->name('detail');
 
-Route::get('/signin', [SignInController::class, 'index'])->name('signin');
-
+// サインインページの表示
+Route::get('/signin', [SignInController::class, 'show'])->name('signin');
+// サインインの処理
+Route::post('/signin_post', 'SignInController@signin')->name('signin.post');
