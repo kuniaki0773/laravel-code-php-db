@@ -11,7 +11,7 @@
             <div class="col-6">
                 <h3>Sign in</h3>
                 <hr>
-                <form action="{{ url('signin') }}" method="post">
+                <form action="{{ route('signin.post') }}" method="post">
                     @csrf
                     <div class="form-group">
                         <label for="name">Name</label>

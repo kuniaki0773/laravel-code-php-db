@@ -34,4 +34,4 @@ Route::get('/detail/{course_id}/{section_id}', [SectionsController::class, 'deta
 // サインインページの表示
 Route::get('/signin', [SignInController::class, 'show'])->name('signin');
 // サインインの処理
-Route::post('/signin', [SignInController::class, 'signin']);
+Route::post('/signin_post', [SignInController::class, 'signin'])->name('signin.post');
