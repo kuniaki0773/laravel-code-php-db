@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\SignInController;
 // use App\Models\Course;
 // use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\SectionController;
@@ -26,6 +27,9 @@ use App\Http\Controllers\SectionsController;
 
 Route::get('/', [CoursesController::class, 'index']);
 Route::get('/sections/{id}', [SectionsController::class, 'show']);
-//Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');;
 Route::get('/sections/{course_id}/{section_id}', [SectionsController::class, 'show'])->name('sections.show');
 Route::get('/courses/{id}', [CoursesController::class, 'show'])->name('courses.show');
+Route::get('/detail/{course_id}/{section_id}', [SectionsController::class, 'detail'])->name('detail');
+
+Route::get('/signin', [SignInController::class, 'index'])->name('signin');
+
