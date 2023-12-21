@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('accounts'); // accountsテーブルが存在する場合は削除
+        Schema::dropIfExists('users'); // usersテーブルが存在する場合は削除
 
         Schema::create('users', function (Blueprint $table) {
             $table->id();
