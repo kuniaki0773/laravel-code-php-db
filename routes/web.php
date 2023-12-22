@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\SignInController;
+use App\Http\Controllers\SignOutController;
 // use App\Models\Course;
 // use App\Http\Controllers\HomeController;
 // use App\Http\Controllers\SectionController;
@@ -36,3 +37,5 @@ Route::get('/signin', [SignInController::class, 'show'])->name('signin');
 // サインインの処理
 Route::post('/signin_post', [SignInController::class, 'signin'])->name('signin.post');
 Route::get('/index', [CoursesController::class, 'index'])->name('index');
+// サインアウトの処理
+Route::get('/signout', [SignOutController::class, 'signout'])->name('signout');
