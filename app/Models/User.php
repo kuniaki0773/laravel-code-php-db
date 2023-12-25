@@ -28,6 +28,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'users';
+
     /**
      * Set the user's password.
      *
