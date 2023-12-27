@@ -6,6 +6,15 @@
 <body>
     @include('_header_view')
     <main class="container py-4">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @include('_message_view')
         <div class="row mt-3">
             <div class="col-6">
