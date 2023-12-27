@@ -32,7 +32,7 @@ class SignUpController extends Controller
             // ユーザーの作成
             $user = User::create([
                 'name' => $request->input('name'),
-                'password' => bcrypt($request->input('password')), // bcryptハッシュ化
+                'password' => $request->input('password'),
         ]);
 
 

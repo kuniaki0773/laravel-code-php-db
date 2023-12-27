@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class SignInController extends Controller
 {
@@ -26,7 +27,7 @@ class SignInController extends Controller
 
         if (Auth::attempt($credentials)) {
             // 認証成功時の処理
-            return redirect('/')->with('success', 'サインインに成功しました。');
+            return redirect()->route('index')->with('success', 'サインインに成功しました。');
         } else {
             // 認証失敗時の処理
             return redirect()->route('signin')->with('error', 'サインインに失敗しました。');
