@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class History extends Model
 {
+    protected $table = 'histories';
+
+    protected $fillable = [
+        'account_id', 'section_id', 'course_id'
+    ];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
