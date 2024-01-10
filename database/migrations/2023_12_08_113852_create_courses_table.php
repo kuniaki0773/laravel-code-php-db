@@ -6,8 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCoursesTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up()
     {
+        // テーブルの存在確認
+        if (Schema::hasTable('courses')) {
+            // テーブルの削除
+            Schema::dropIfExists('courses');
+        }
+
+        // テーブルの再作成
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -18,8 +30,14 @@ class CreateCoursesTable extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
+        // テーブルの削除
         Schema::dropIfExists('courses');
     }
 }

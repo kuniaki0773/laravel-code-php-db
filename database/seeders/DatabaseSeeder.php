@@ -14,20 +14,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // 他のシーダーがあればここで呼び出す
-        $this->call([
-            CoursesTableSeeder::class,
-            // 他のシーダーがあればここで呼び出す
-        ]);
-
-        // CategoriesTableSeeder を最後に呼び出す
+        // シーダーの呼び出し
         $this->call([
             CategoriesTableSeeder::class,
         ]);
 
         $this->call([
+            CoursesTableSeeder::class,
+        ]);
+
+        $this->call([
             SectionsTableSeeder::class,
-            // 他のシーダーがあればここで呼び出す
         ]);
     }
 }

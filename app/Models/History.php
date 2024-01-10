@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class History extends Model
 {
+    protected $table = 'histories';
+
+    protected $fillable = [
+        'user_id', 'section_id', 'course_id'
+    ];
+
     public function course()
     {
         return $this->belongsTo(Course::class);
@@ -14,5 +20,10 @@ class History extends Model
     public function section()
     {
         return $this->belongsTo(Section::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

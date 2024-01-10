@@ -6,6 +6,7 @@ use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\SignInController;
 use App\Http\Controllers\SignUpController;
 use App\Http\Controllers\SignOutController;
+use App\Http\Controllers\HistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::get('/signup', [SignUpController::class, 'show'])->name('signup.show');
 Route::post('/signup', [SignUpController::class, 'signup'])->name('signup.post');
 // サインアウトの処理
 Route::get('/signout', [SignOutController::class, 'signout'])->name('signout');
+// 学習履歴画面の表示
+Route::get('/history', [HistoryController::class, 'show'])->name('history');
+// 学習履歴の処理
+Route::post('/history', [HistoryController::class, 'postHistory'])->name('history.post');
