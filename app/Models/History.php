@@ -9,7 +9,7 @@ class History extends Model
     protected $table = 'histories';
 
     protected $fillable = [
-        'account_id', 'section_id', 'course_id'
+        'user_id', 'section_id', 'course_id'
     ];
 
     public function course()

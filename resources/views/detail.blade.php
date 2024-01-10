@@ -17,15 +17,16 @@
         <div class="row">
             <div class="col-md-3 mb-4">
                 <div class="card shadow-sm">
-                    <img src="{{ asset("img/courses/{$course['id']}.png") }}" alt="course image">
+                    <img src="{{ asset('img/courses/' . $course['id'] . '.png') }}" alt="course image">
                     <div class="card-body">
                         <h5 class="card-title">{{ $course['title'] }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ $course->category->title}}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $course['category']['title'] }}</h6>
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach ($sections as $section)
                             <li class="list-group-item">
-                                <a href="{{ route('sections.show', ['course_id' => $course['id'], 'section_id' => $section['id']]) }}">
+                                <a href="{{ route('sections.show', ['course_id' => $course['id'], 'section_id' => $section['id']]) }}"
+                                    class="{{ auth()->check() && $section['created_at'] != null ? 'section-finished' : '' }}">
                                     Section {{ $section['no'] }} : {{ $section['title'] }}
                                 </a>
                             </li>
@@ -42,12 +43,15 @@
                         {{ $current_section['title'] }}
                     </h5>
                     {{-- サインインしている場合のみ表示 --}}
-                    {{-- <form action="{{ route('history.post') }}" method="post">
-                        @csrf
-                        <input type="hidden" name="course_id" value="{{ $course['id'] }}">
-                        <input type="hidden" name="section_id" value="{{ $current_section['id'] }}">
-                        <button type="submit" class="btn btn-primary" {{ $current_section['created_at'] != null ? 'disabled' : '' }}>Finish</button>
-                    </form> --}}
+                    @if (auth()->check())
+                        <form action="{{ route('history.post') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="course_id" value="{{ $course['id'] }}">
+                            <input type="hidden" name="section_id" value="{{ $current_section['id'] }}">
+                            <input type="hidden" name="user_id" value="{{ auth()->id() }}">
+                            <button type="submit" class="btn btn-primary" {{ $current_section['created_at'] != null ? 'disabled' : '' }}>Finish</button>
+                        </form>
+                    @endif
                 @else
                     <p>No video available</p>
                 @endif

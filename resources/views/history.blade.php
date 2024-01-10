@@ -13,21 +13,19 @@
                 <h3>Learning history</h3>
                 <hr>
                 <ul class="list-group">
-                    {{-- @foreach ($histories as $history)
+                    @forelse ($histories as $history)
                         <li class="list-group-item">
-                            <a href="{{ route('detail', ['course_id' => $history->course_id, 'section_id' => $history->section_id]) }}">
-                                {{ $history->course_title }}
-                                -
-                                Section
-                                {{ $history->section_no }}
-                                :
-                                {{ $history->section_title }}
-                                (
-                                {{ $history->created_at }}
-                                )
+                            <a href="{{ route('sections.show', ['course_id' => $history->section->course->id, 'section_id' => $history->section_id]) }}">
+                                {{ $history->section->course->title }}
+                                - Section
+                                {{ $history->section->no }}
+                                : {{ $history->section->title }}
+                                ({{ $history->created_at }})
                             </a>
                         </li>
-                    @endforeach --}}
+                    @empty
+                        <li class="list-group-item">No learning history available.</li>
+                    @endforelse
                 </ul>
             </div>
         </div>

@@ -19,6 +19,12 @@ class CreateCategoriesTable extends Migration
             // 他にも必要なカラムがあれば追加
             $table->timestamps();
         });
+
+        // users テーブルへの外部キー制約を追加
+        Schema::table('categories', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+        });
     }
 
     /**
@@ -28,6 +34,11 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        Schema::table('categories', function (Blueprint $table) {
+            // users テーブルへの外部キー制約を削除
+            $table->dropForeign(['user_id']);
+        });
+
         Schema::dropIfExists('categories');
     }
 }
